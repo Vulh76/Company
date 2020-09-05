@@ -1,4 +1,5 @@
-package ru.sbt.company.model;
+package ru.sbt.company.models;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,22 +14,31 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    long id;
+    private long id;
     @Column(name = "FIRST_NAME")
-    String firstName;
+    private String firstName;
     @Column(name = "LAST_NAME")
-    String lastName;
+    private String lastName;
     @Column(name = "AGE")
-    int age;
+    private int age;
     @Column(name = "DEPT_ID")
-    int deptId;
+    private int deptId;
+
+    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    //private List<String> addresses;
+
+    public Employee() {
+    }
+
+    public Employee(String firstName, String lastName, int age, int deptId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.deptId = deptId;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -65,7 +75,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "\nEmployee{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

@@ -1,4 +1,4 @@
-package ru.sbt.company.model;
+package ru.sbt.company.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,16 +13,19 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    long id;
+    private long id;
     @Column(name = "NAME")
-    String name;
+    private String name;
+
+    public Department() {
+    }
+
+    public Department(String name) {
+        this.name = name;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -35,7 +38,7 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department{" +
+        return "\nDepartment{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

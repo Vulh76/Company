@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({"classpath:db.properties"})
+@PropertySource({"classpath:application.properties"})
 @ComponentScan("ru.sbt.company")
 public class HibernateConfig {
     private final Environment environment;
@@ -32,8 +32,8 @@ public class HibernateConfig {
         final BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(environment.getProperty("jdbc.driverClassName"));
         dataSource.setUrl(environment.getProperty("jdbc.url"));
-        dataSource.setUsername(environment.getProperty("jdbc.user"));
-        dataSource.setPassword(environment.getProperty("jdbc.pass"));
+        dataSource.setUsername(environment.getProperty("jdbc.username"));
+        dataSource.setPassword(environment.getProperty("jdbc.password"));
         return dataSource;
     }
 
