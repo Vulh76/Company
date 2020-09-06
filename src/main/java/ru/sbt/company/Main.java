@@ -15,7 +15,7 @@ public class Main {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(HibernateConfig.class);
         EmployeeService employeeService = applicationContext.getBean(EmployeeService.class);
 
-
+        employeeService.addEmployee(new Employee("Андрей", "Иванов", 23, 1));
 
         List<Employee> employees = Arrays.asList(
             new Employee("Андрей", "Иванов", 23, 1),

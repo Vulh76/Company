@@ -19,27 +19,27 @@ public class EmployeeService {
     }
 
     @Transactional
-    List<Employee> allEmployees() {
+    public List<Employee> allEmployees() {
         return employeeDAO.allEmployees();
     }
 
     @Transactional
-    Employee employeeById(long id) {
+    public Employee employeeById(long id) {
         return employeeDAO.employeeById(id);
     }
 
     @Transactional
-    void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) {
         employeeDAO.addEmployee(employee);
     }
 
     @Transactional
-    void deleteEmployee(Employee employee) {
+    public void deleteEmployee(Employee employee) {
         employeeDAO.deleteEmployee(employee);
     }
 
     @Transactional
-    void editEmployee(Employee employee) {
+    public void editEmployee(Employee employee) {
         employeeDAO.editEmployee(employee);
     }
 

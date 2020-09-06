@@ -42,11 +42,7 @@ public class HibernateConfig {
         final LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setPackagesToScan("ru/sbt/company");
-        final Properties property = new Properties();
-        property.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
-        property.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
-        property.setProperty("hibernate.hbm2ddl", environment.getProperty("hibernate.hbm2ddl"));
-        factoryBean.setHibernateProperties(property);
+        factoryBean.setHibernateProperties(getProperties());
         return factoryBean;
     }
 
@@ -56,5 +52,13 @@ public class HibernateConfig {
         htm.setDataSource(dataSource);
         htm.setSessionFactory(sessionFactory);
         return htm;
+    }
+
+    private Properties getProperties() {
+        final Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+        properties.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+        properties.setProperty("hibernate.hbm2ddl", environment.getProperty("hibernate.hbm2ddl"));
+        return properties;
     }
 }
