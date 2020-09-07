@@ -11,10 +11,10 @@ import javax.persistence.Table;
 @Table(name = "DEPARTMENTS")
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private long id;
-    @Column(name = "NAME")
+    private int id;
+    @Column(name = "NAME", length = 100)
     private String name;
 
     public Department() {
@@ -24,8 +24,12 @@ public class Department {
         this.name = name;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -38,7 +42,7 @@ public class Department {
 
     @Override
     public String toString() {
-        return "\nDepartment{" +
+        return "Department{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

@@ -10,4 +10,6 @@ public interface EmployeeDAO {
     void addEmployee(Employee employee);
     void deleteEmployee(Employee employee);
     void editEmployee(Employee employee);
+    int count();
+    void deleteAll();
 }

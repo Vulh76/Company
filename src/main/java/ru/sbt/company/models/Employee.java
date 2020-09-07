@@ -12,12 +12,12 @@ import javax.persistence.Table;
 @Table(name = "EMPLOYEES")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private long id;
-    @Column(name = "FIRST_NAME")
+    private int id;
+    @Column(name = "FIRST_NAME", length = 100)
     private String firstName;
-    @Column(name = "LAST_NAME")
+    @Column(name = "LAST_NAME", length = 100)
     private String lastName;
     @Column(name = "AGE")
     private int age;
@@ -37,8 +37,12 @@ public class Employee {
         this.deptId = deptId;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -75,7 +79,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\nEmployee{" +
+        return "Employee{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

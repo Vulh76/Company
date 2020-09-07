@@ -19,11 +19,12 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource({"classpath:application.properties"})
 @ComponentScan("ru.sbt.company")
-public class HibernateConfig {
+public class AppConfig {
+
     private final Environment environment;
 
     @Autowired
-    public HibernateConfig(Environment environment) {
+    public AppConfig(Environment environment) {
         this.environment = environment;
     }
 
@@ -58,7 +59,8 @@ public class HibernateConfig {
         final Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         properties.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
-        properties.setProperty("hibernate.hbm2ddl", environment.getProperty("hibernate.hbm2ddl"));
+        properties.setProperty("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
+        properties.setProperty("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         return properties;
     }
 }
